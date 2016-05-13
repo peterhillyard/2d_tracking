@@ -24,15 +24,30 @@ import os.path
 # np.savetxt(true_loc_f_new_name,true_locs)
 # quit()
 
-test_loc_list = ['neals_new_house','gpa_house','neals_old_house']
+# This is a list of the locations an measurement campaign was performed
+test_loc_list = ['neals_new_house',
+                 'gpa_house',
+                 'neals_old_house']
+
+# This is a list of the days the experiments were performed at each location
 test_day_list = [['2014_11_10'],
                  ['2016_01_04','2016_01_08','2016_01_15'],
                  ['2012_11_01']]
+
+# This is a list of all of the test names run on a given day and location
 test_variation_list = [[['']],
                        [[''],['_pete','_pete_bw_tag','_pete_tag'],['_pete_tag','_pete_tag_bw']],
                        [['']]]
-test_channel_num_list = [4,4,5]
-test_node_mask_list = [[],[4,14,15],[]]
+
+# This is a list of the number of channels used at each location
+test_channel_num_list = [4,
+                         4,
+                         5]
+
+# This is a list of the nodes you want to exclude from the imaging
+test_node_mask_list = [[],
+                       [4,14,15],
+                       []]
 
 loc_num = 2
 day_num = 0
