@@ -8,23 +8,27 @@ import matplotlib.pyplot as plt
 import os.path
 import scipy.spatial.distance as dist
 
-delta_p = 1.0 # check unit type
-lambda_val = 1.2 # check unit type
-link_to_show = 1
+delta_p = 3.0 # check unit type
+lambda_val = 1.7 # check unit type
+link_to_show = 10
 
-test_loc_list = ['neals_new_house','gpa_house','neals_old_house','span_lab']
+test_loc_list = ['neals_new_house','gpa_house','neals_old_house','span_lab','pizza_house','airbnb_atl']
 test_day_list = [['2014_11_10'],
                  ['2016_01_04','2016_01_08','2016_01_15'],
                  ['2012_11_01'],
-                 ['2016_02_03']]
+                 ['2016_02_03'],
+                 ['2016_05_16'],
+                 ['2016_05_17']]
 test_variation_list = [[['']],
                        [[''],['_pete','_pete_bw_tag','_pete_tag'],['_pete_tag','_pete_tag_bw']],
                        [['']],
-                       [['']]]
-test_unit_list = ['meters','feet','feet','feet']
-test_channel_num_list = [4,4,5,4]
+                       [['']],
+                       [['_lcom_amal','_lcom_peter','_lcom_amal_walk']],
+                       [['_lcom_amal','_lcom_peter','_lcom_amal_walk']]]
+test_unit_list = ['meters','feet','feet','feet','feet','feet']
+test_channel_num_list = [4,4,5,4,4,4]
 
-loc_num = 2
+loc_num = 5
 day_num = 0
 variation_num = 0
 test_loc = test_loc_list[loc_num]

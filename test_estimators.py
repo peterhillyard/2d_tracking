@@ -27,29 +27,39 @@ import os.path
 # This is a list of the locations an measurement campaign was performed
 test_loc_list = ['neals_new_house',
                  'gpa_house',
-                 'neals_old_house']
+                 'neals_old_house',
+                 'pizza_house',
+                 'airbnb_atl']
 
 # This is a list of the days the experiments were performed at each location
 test_day_list = [['2014_11_10'],
                  ['2016_01_04','2016_01_08','2016_01_15'],
-                 ['2012_11_01']]
+                 ['2012_11_01'],
+                 ['2016_05_16'],
+                 ['2016_05_17']]
 
 # This is a list of all of the test names run on a given day and location
 test_variation_list = [[['']],
                        [[''],['_pete','_pete_bw_tag','_pete_tag'],['_pete_tag','_pete_tag_bw']],
-                       [['']]]
+                       [['']],
+                       [['_lcom_amal','_lcom_peter','_lcom_amal_walk']],
+                       [['_lcom_amal','_lcom_peter','_lcom_qi','_omni_amal','_omni_peter','_omni_qi']]]
 
 # This is a list of the number of channels used at each location
 test_channel_num_list = [4,
                          4,
-                         5]
+                         5,
+                         4,
+                         4]
 
 # This is a list of the nodes you want to exclude from the imaging
 test_node_mask_list = [[],
                        [4,14,15],
+                       [],
+                       [],
                        []]
 
-loc_num = 2
+loc_num = 4
 day_num = 0
 variation_num = 0
 test_loc = test_loc_list[loc_num]
@@ -57,7 +67,7 @@ test_day = test_day_list[loc_num][day_num]
 test_variation = test_variation_list[loc_num][day_num][variation_num]
 
 node_loc_f_name = 'data/node_loc_data/' + test_loc + '/node_loc_' + test_day + '.txt'
-image_data_f_name = 'data/image_data/' + test_loc + '/' + test_day + '/image_data_dp_1p0_lm_0p4.txt'
+image_data_f_name = 'data/image_data/' + test_loc + '/' + test_day + '/image_data_dp_3p0_lm_1p7.txt'
 # image_data_f_name = 'data/image_data/' + test_loc + '/' + test_day + '/image_data_dp_0p5_lm_0p2.txt'
 rss_data_f_name = 'data/rss_data/' + test_loc + '/rss_' + test_day + test_variation + '_all.txt'
 true_loc_f_name = 'data/true_loc_data/' + test_loc + '/true_loc_' + test_day + test_variation + '.txt'
@@ -200,9 +210,9 @@ my_gmle = GMLE.GMLE(my_image, my_rss_editor, my_network, V, min_p, p127, ltb_len
 
 ######################
 # Create RTI
-sigmax2       = 0.25
-delta         = 3.0
-excessPathLen = 0.2
+sigmax2       = 2.5
+delta         = 2.5
+excessPathLen = 3.0
 personInAreaThreshold = 2.1 #2.1
 my_rti = RTI.RTI(my_image,my_rss_editor,my_network,my_mabd_llcd,sigmax2,delta,excessPathLen,personInAreaThreshold)
 
@@ -220,12 +230,12 @@ counter = 0
 with open(rss_data_f_name, 'r') as f:
     for line in f:
             
-        my_ghmm_fup.observe(line,true_locs[counter,:])
-        my_ghmm_fup.plot_current_image(true_locs[counter,:],0.01)
+        my_ghmm_f.observe(line,true_locs[counter,:])
+        my_ghmm_f.plot_current_image(true_locs[counter,:],0.01)
         if os.path.isfile(true_loc_f_name):
             counter += 1
         
-my_ghmm_fup.get_accuracy()
+my_ghmm_f.get_accuracy()
         
         
         
