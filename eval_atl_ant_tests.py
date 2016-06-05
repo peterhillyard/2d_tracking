@@ -21,11 +21,17 @@ import rti_class as rti
 # pivot_coords_fname = 'data/true_loc_data/airbnb_atl/pivot_coords_2016_05_17.txt'
 # path_ind_fname = 'data/true_loc_data/airbnb_atl/pivot_idx_2016_05_17.txt'
 
-loc = 'pizza_house'
-node_loc_date = '2016_05_16'
-rss_date_and_name = '2016_05_18_omni_peter_all'
-pivot_coord_date ='2016_05_16'
-pivot_idx_date = '2016_05_16'
+loc = 'airbnb_atl'
+node_loc_date = '2016_05_17'
+rss_date_and_name = '2016_05_17_omni_peter_walk_all'
+pivot_coord_date = '2016_05_17'
+pivot_idx_date = '2016_05_17'
+
+# loc = 'pizza_house'
+# node_loc_date = '2016_05_16'
+# rss_date_and_name = '2016_05_20_lcom_peter_2_all'
+# pivot_coord_date ='2016_05_16'
+# pivot_idx_date = '2016_05_16'
 
 node_loc_fname = 'data/node_loc_data/' + loc + '/node_loc_' + node_loc_date + '.txt'
 rss_fname = 'data/rss_data/' + loc + '/rss_' + rss_date_and_name + '.txt'
@@ -34,10 +40,10 @@ path_ind_fname = 'data/true_loc_data/' + loc + '/pivot_idx_' + pivot_idx_date + 
 results_fname = 'data/results/' + loc + '/performance_' + rss_date_and_name + '.txt'
 
 num_ch = 4
-delta_p = 0.8
-sigmax2 = 1.5
-delta = 4.0
-epl = 0.3
+delta_p = 1.0
+sigmax2 = 0.1
+delta = 12.0
+epl = 0.5
 rti_T = 0.0
 skip_time=16.0
 cal_time=16.0
@@ -60,8 +66,8 @@ speed = 1.0 / 2.0
 # Initialize moving average, top M links rti stuff
 ltb_len = 20
 stb_len = 5
-M = 3
-fade_type = 'avg'
+M = 2
+fade_type = 'lse'
 
 rti_obj = rti.fade_level_rti(node_loc_fname,num_ch,delta_p,sigmax2,delta,epl,rti_T,skip_time,cal_time)
 rti_obj.set_extra_params(ltb_len,stb_len,M,fade_type)
