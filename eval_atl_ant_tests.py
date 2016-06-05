@@ -23,7 +23,7 @@ import rti_class as rti
 
 loc = 'pizza_house'
 node_loc_date = '2016_05_16'
-rss_date_and_name = '2016_05_20_lcom_peter_all'
+rss_date_and_name = '2016_05_18_omni_peter_all'
 pivot_coord_date ='2016_05_16'
 pivot_idx_date = '2016_05_16'
 
@@ -50,11 +50,21 @@ speed = 1.0 / 2.0
 # rti_obj.set_true_coord_params(path_start_time,speed,pivot_coords_fname,path_ind_fname)
 
 # Initialize moving average rti stuff
+# ltb_len = 20
+# stb_len = 5
+# 
+# rti_obj = rti.ma_rti(node_loc_fname,num_ch,delta_p,sigmax2,delta,epl,rti_T,skip_time,cal_time)
+# rti_obj.set_mabd_params(ltb_len,stb_len)
+# rti_obj.set_true_coord_params(path_start_time,speed,pivot_coords_fname,path_ind_fname)
+
+# Initialize moving average, top M links rti stuff
 ltb_len = 20
 stb_len = 5
+M = 3
+fade_type = 'avg'
 
-rti_obj = rti.ma_rti(node_loc_fname,num_ch,delta_p,sigmax2,delta,epl,rti_T,skip_time,cal_time)
-rti_obj.set_mabd_params(ltb_len,stb_len)
+rti_obj = rti.fade_level_rti(node_loc_fname,num_ch,delta_p,sigmax2,delta,epl,rti_T,skip_time,cal_time)
+rti_obj.set_extra_params(ltb_len,stb_len,M,fade_type)
 rti_obj.set_true_coord_params(path_start_time,speed,pivot_coords_fname,path_ind_fname)
 
 est_coord_vec = []
@@ -64,7 +74,7 @@ true_coord_vec = []
 with open(rss_fname,'r') as f:
     for line in f:
         rti_obj.observe(line)
-        #rti_obj.plot_current_image(pause_time=0.05)
+        rti_obj.plot_current_image(pause_time=0.05)
         true_coord_vec.append(rti_obj.get_true_coord())
         est_coord_vec.append(rti_obj.get_est_coord())
         
