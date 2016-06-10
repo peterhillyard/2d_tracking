@@ -64,13 +64,24 @@ speed = 1.0 / 2.0
 # rti_obj.set_true_coord_params(path_start_time,speed,pivot_coords_fname,path_ind_fname)
 
 # Initialize moving average, top M links rti stuff
-ltb_len = 20
-stb_len = 5
-M = 1
-fade_type = 'lse'
+# ltb_len = 20
+# stb_len = 5
+# M = 1
+# fade_type = 'lse'
+#  
+# rti_obj = rti.fade_level_rti(node_loc_fname,num_ch,delta_p,sigmax2,delta,epl,rti_T,skip_time,cal_time)
+# rti_obj.set_extra_params(ltb_len,stb_len,M,fade_type)
+# rti_obj.set_true_coord_params(path_start_time,speed,pivot_coords_fname,path_ind_fname)
 
-rti_obj = rti.fade_level_rti(node_loc_fname,num_ch,delta_p,sigmax2,delta,epl,rti_T,skip_time,cal_time)
-rti_obj.set_extra_params(ltb_len,stb_len,M,fade_type)
+# Initialize moving average, top M links rti stuff
+ktype = 'epan'
+R = np.array(range(-110, 0))
+sigma_G2 = 30.
+beta_p = 0.99 # short term
+beta_q = 0.7 # long term
+ 
+rti_obj = rti.krti(node_loc_fname,num_ch,delta_p,sigmax2,delta,epl,rti_T,skip_time,cal_time)
+rti_obj.set_extra_params(R,ktype,sigma_G2,beta_p,beta_q)
 rti_obj.set_true_coord_params(path_start_time,speed,pivot_coords_fname,path_ind_fname)
 
 est_coord_vec = []
@@ -79,8 +90,8 @@ true_coord_vec = []
 # loop through all lines in the RSS .txt file
 with open(rss_fname,'r') as f:
     for line in f:
-        rti_obj.observe(line)
-        #rti_obj.plot_current_image(pause_time=0.05)
+        rti_obj.observe(line)        
+        rti_obj.plot_current_image(pause_time=0.05)
         true_coord_vec.append(rti_obj.get_true_coord())
         est_coord_vec.append(rti_obj.get_est_coord())
         
