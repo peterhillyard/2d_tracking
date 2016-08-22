@@ -29,7 +29,7 @@ import rti_class as rti
 
 loc = 'pizza_house'
 node_loc_date = '2016_05_16'
-rss_date_and_name = '2016_05_18_epatch_peter_2_all'
+rss_date_and_name = '2016_05_18_omni_peter_2_all'
 pivot_coord_date ='2016_05_16'
 pivot_idx_date = '2016_05_16'
 
