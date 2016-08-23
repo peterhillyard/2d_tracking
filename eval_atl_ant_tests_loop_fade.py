@@ -21,11 +21,17 @@ import rti_class as rti
 # pivot_coords_fname = 'data/true_loc_data/airbnb_atl/pivot_coords_2016_05_17.txt'
 # path_ind_fname = 'data/true_loc_data/airbnb_atl/pivot_idx_2016_05_17.txt'
 
-loc = 'airbnb_atl'
-node_loc_date = '2016_05_17'
-rss_date_and_name = '2016_05_17_lcom_qi_all'
-pivot_coord_date = '2016_05_17'
-pivot_idx_date = '2016_05_17'
+loc = 'gregs_house'
+node_loc_date = '2016_05_19'
+rss_date_and_name = '2016_05_19_omni_amal_all'
+pivot_coord_date = '2016_05_19'
+pivot_idx_date = '2016_05_19'
+
+# loc = 'airbnb_atl'
+# node_loc_date = '2016_05_17'
+# rss_date_and_name = '2016_05_17_lcom_qi_all'
+# pivot_coord_date = '2016_05_17'
+# pivot_idx_date = '2016_05_17'
 
 # loc = 'pizza_house'
 # node_loc_date = '2016_05_16'
