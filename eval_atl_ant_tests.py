@@ -9,6 +9,7 @@ Created on May 30, 2016
 
 import sys
 import numpy as np
+import matplotlib.pyplot as plt
 
 sys.path.insert(0, '../my_span_package') # Adds higher directory to python modules path.
 import rti_class as rti
@@ -29,7 +30,7 @@ import rti_class as rti
 
 loc = 'pizza_house'
 node_loc_date = '2016_05_16'
-rss_date_and_name = '2016_05_18_omni_peter_2_all'
+rss_date_and_name = '2016_05_20_lcom_peter_2_all'
 pivot_coord_date ='2016_05_16'
 pivot_idx_date = '2016_05_16'
 
@@ -41,7 +42,7 @@ results_fname = 'data/results/' + loc + '/performance_' + rss_date_and_name + '.
 
 num_ch = 4
 delta_p = 1.0
-sigmax2 = 0.1
+sigmax2 = 0.05
 delta = 12.0
 epl = 0.5
 rti_T = 0.0
@@ -74,8 +75,8 @@ speed = 1.0 / 2.0
 # rti_obj.set_true_coord_params(path_start_time,speed,pivot_coords_fname,path_ind_fname)
 
 # Initialize moving average, top M links rti stuff
-ktype = 'epan'
-R = np.array(range(-110, 0))
+ktype = 'epan' # type of kernel
+R = np.array(range(-110, 0)) # Range of RSS values
 sigma_G2 = 30.
 beta_p = 0.99 # short term
 beta_q = 0.7 # long term
@@ -98,8 +99,11 @@ with open(rss_fname,'r') as f:
 true_coord_vec = np.array(true_coord_vec)
 est_coord_vec = np.array(est_coord_vec)
 
-rti_obj.compute_rmse(true_coord_vec,est_coord_vec,save_type='p',out_fname=results_fname)
-# sre,yvals = rti_obj.compute_cdf(true_coord_vec,est_coord_vec)
+rti_obj.compute_rmse(true_coord_vec,est_coord_vec,save_type='ps',out_fname=results_fname)
+sre,yvals = rti_obj.compute_cdf(true_coord_vec,est_coord_vec)
+plt.plot(sre,yvals)
+plt.grid()
+plt.show()
 
 
 
