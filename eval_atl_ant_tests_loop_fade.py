@@ -22,24 +22,24 @@ import rti_class as rti
 # pivot_coords_fname = 'data/true_loc_data/airbnb_atl/pivot_coords_2016_05_17.txt'
 # path_ind_fname = 'data/true_loc_data/airbnb_atl/pivot_idx_2016_05_17.txt'
 
-# loc = 'airbnb_atl'
-# node_loc_date = '2016_05_17'
-# rss_date_and_name = '2016_05_17_omni_peter_all'
-# pivot_coord_date = '2016_05_17'
-# pivot_idx_date = '2016_05_17'
+loc = 'airbnb_atl'
+node_loc_date = '2016_05_17'
+rss_date_and_name = '2016_05_17_lcom_qi_all'
+pivot_coord_date = '2016_05_17'
+pivot_idx_date = '2016_05_17'
 
-loc = 'pizza_house'
-node_loc_date = '2016_05_16'
-rss_date_and_name = '2016_05_18_epatch_qi_2_all'
-print rss_date_and_name
-pivot_coord_date ='2016_05_16'
-pivot_idx_date = '2016_05_16'
+# loc = 'pizza_house'
+# node_loc_date = '2016_05_16'
+# rss_date_and_name = '2016_05_18_epatch_qi_2_all'
+# pivot_coord_date ='2016_05_16'
+# pivot_idx_date = '2016_05_16'
 
 node_loc_fname = 'data/node_loc_data/' + loc + '/node_loc_' + node_loc_date + '.txt'
 rss_fname = 'data/rss_data/' + loc + '/rss_' + rss_date_and_name + '.txt'
 pivot_coords_fname = 'data/true_loc_data/' + loc + '/pivot_coords_' + pivot_coord_date + '.txt'
 path_ind_fname = 'data/true_loc_data/' + loc + '/pivot_idx_' + pivot_idx_date + '.txt'
 results_fname = 'data/results/' + loc + '/performance_' + rss_date_and_name + '.txt'
+print rss_date_and_name
 
 num_ch = 4
 rti_T = 0.0

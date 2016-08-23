@@ -22,17 +22,17 @@ import rti_class as rti
 # pivot_coords_fname = 'data/true_loc_data/airbnb_atl/pivot_coords_2016_05_17.txt'
 # path_ind_fname = 'data/true_loc_data/airbnb_atl/pivot_idx_2016_05_17.txt'
 
-# loc = 'airbnb_atl'
-# node_loc_date = '2016_05_17'
-# rss_date_and_name = '2016_05_17_omni_peter_all'
-# pivot_coord_date = '2016_05_17'
-# pivot_idx_date = '2016_05_17'
+loc = 'airbnb_atl'
+node_loc_date = '2016_05_17'
+rss_date_and_name = '2016_05_17_omni_amal_all'
+pivot_coord_date = '2016_05_17'
+pivot_idx_date = '2016_05_17'
 
-loc = 'pizza_house'
-node_loc_date = '2016_05_16'
-rss_date_and_name = '2016_05_20_lcom_peter_2_all'
-pivot_coord_date ='2016_05_16'
-pivot_idx_date = '2016_05_16'
+# loc = 'pizza_house'
+# node_loc_date = '2016_05_16'
+# rss_date_and_name = '2016_05_20_lcom_peter_2_all'
+# pivot_coord_date ='2016_05_16'
+# pivot_idx_date = '2016_05_16'
 
 node_loc_fname = 'data/node_loc_data/' + loc + '/node_loc_' + node_loc_date + '.txt'
 rss_fname = 'data/rss_data/' + loc + '/rss_' + rss_date_and_name + '.txt'
@@ -92,7 +92,7 @@ true_coord_vec = []
 with open(rss_fname,'r') as f:
     for line in f:
         rti_obj.observe(line)        
-        rti_obj.plot_current_image(pause_time=0.05)
+        #rti_obj.plot_current_image(pause_time=0.05)
         true_coord_vec.append(rti_obj.get_true_coord())
         est_coord_vec.append(rti_obj.get_est_coord())
         
