@@ -9,7 +9,6 @@ Created on May 30, 2016
 
 import sys
 import numpy as np
-import matplotlib.pyplot as plt
 
 sys.path.insert(0, '../my_span_package') # Adds higher directory to python modules path.
 import rti_class as rti
