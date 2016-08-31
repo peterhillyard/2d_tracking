@@ -21,11 +21,17 @@ import rti_class as rti
 # pivot_coords_fname = 'data/true_loc_data/airbnb_atl/pivot_coords_2016_05_17.txt'
 # path_ind_fname = 'data/true_loc_data/airbnb_atl/pivot_idx_2016_05_17.txt'
 
-loc = 'gregs_house'
-node_loc_date = '2016_05_19'
-rss_date_and_name = '2016_05_19_omni_peter_all'
-pivot_coord_date = '2016_05_19'
-pivot_idx_date = '2016_05_19'
+loc = 'rs_room'
+node_loc_date = '2016_08_30'
+rss_date_and_name = 'rs_test1'
+pivot_coord_date = '2016_08_30'
+pivot_idx_date = '2016_08_30'
+
+# loc = 'gregs_house'
+# node_loc_date = '2016_05_19'
+# rss_date_and_name = '2016_05_19_lcom_peter_walk_all'
+# pivot_coord_date = '2016_05_19'
+# pivot_idx_date = '2016_05_19'
 
 # loc = 'airbnb_atl'
 # node_loc_date = '2016_05_17'
@@ -47,15 +53,15 @@ results_fname = 'data/results/' + loc + '/performance_' + rss_date_and_name + '.
 
 num_ch = 4
 delta_p = 1.0
-sigmax2 = 0.05
-delta = 12.0
-epl = 0.5
+sigmax2 = 0.01
+delta = 10.0
+epl = 1.0
 rti_T = 0.0
-skip_time=16.0
-cal_time=16.0
+skip_time=30. #16.0
+cal_time=60. #16.0
 
 path_start_time = skip_time+cal_time
-speed = 1.0 / 2.0
+speed = 1.0/2.0 #1.0 / 2.0
 
 # Initialize rti stuff
 # rti_obj = rti.ab_rti(node_loc_fname,num_ch,delta_p,sigmax2,delta,epl,rti_T,skip_time,cal_time)
@@ -70,25 +76,25 @@ speed = 1.0 / 2.0
 # rti_obj.set_true_coord_params(path_start_time,speed,pivot_coords_fname,path_ind_fname)
 
 # Initialize moving average, top M links rti stuff
-ltb_len = 20
-stb_len = 5
-M = 3
-fade_type = 'lse'
-  
-rti_obj = rti.fade_level_rti(node_loc_fname,num_ch,delta_p,sigmax2,delta,epl,rti_T,skip_time,cal_time)
-rti_obj.set_extra_params(ltb_len,stb_len,M,fade_type)
-rti_obj.set_true_coord_params(path_start_time,speed,pivot_coords_fname,path_ind_fname)
+# ltb_len = 20
+# stb_len = 5
+# M = 3
+# fade_type = 'lse'
+#   
+# rti_obj = rti.fade_level_rti(node_loc_fname,num_ch,delta_p,sigmax2,delta,epl,rti_T,skip_time,cal_time)
+# rti_obj.set_extra_params(ltb_len,stb_len,M,fade_type)
+# rti_obj.set_true_coord_params(path_start_time,speed,pivot_coords_fname,path_ind_fname)
 
 # Initialize moving average, top M links rti stuff
-# ktype = 'epan' # type of kernel
-# R = np.array(range(-110, 0)) # Range of RSS values
-# sigma_G2 = 30.
-# beta_p = 0.99 # short term
-# beta_q = 0.7 # long term
-#  
-# rti_obj = rti.krti(node_loc_fname,num_ch,delta_p,sigmax2,delta,epl,rti_T,skip_time,cal_time)
-# rti_obj.set_extra_params(R,ktype,sigma_G2,beta_p,beta_q)
-# rti_obj.set_true_coord_params(path_start_time,speed,pivot_coords_fname,path_ind_fname)
+ktype = 'gaus' # type of kernel
+R = np.array(range(-110, 0)) # Range of RSS values
+sigma_G2 = 25.
+beta_p = 0.98 # short term
+beta_q = 0.7 # long term
+  
+rti_obj = rti.krti(node_loc_fname,num_ch,delta_p,sigmax2,delta,epl,rti_T,skip_time,cal_time)
+rti_obj.set_extra_params(R,ktype,sigma_G2,beta_p,beta_q)
+rti_obj.set_true_coord_params(path_start_time,speed,pivot_coords_fname,path_ind_fname)
 
 est_coord_vec = []
 true_coord_vec = []

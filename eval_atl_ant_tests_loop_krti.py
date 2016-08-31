@@ -23,20 +23,19 @@ import rti_class as rti
 
 loc = 'gregs_house'
 node_loc_date = '2016_05_19'
-rss_date_and_name = '2016_05_19_omni_peter_all'
+rss_date_and_name = '2016_05_19_lcom_peter_walk_2_all'
 pivot_coord_date = '2016_05_19'
 pivot_idx_date = '2016_05_19'
 
 # loc = 'airbnb_atl'
 # node_loc_date = '2016_05_17'
-# rss_date_and_name = '2016_05_17_lcom_qi_all'
+# rss_date_and_name = '2016_05_17_lcom_peter_walk_2_all'
 # pivot_coord_date = '2016_05_17'
 # pivot_idx_date = '2016_05_17'
 
 # loc = 'pizza_house'
 # node_loc_date = '2016_05_16'
 # rss_date_and_name = '2016_05_18_epatch_qi_2_all'
-
 # pivot_coord_date ='2016_05_16'
 # pivot_idx_date = '2016_05_16'
 
