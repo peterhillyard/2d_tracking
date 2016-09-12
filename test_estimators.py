@@ -59,7 +59,7 @@ test_node_mask_list = [[],
                        [],
                        []]
 
-loc_num = 4
+loc_num = 2
 day_num = 0
 variation_num = 0
 test_loc = test_loc_list[loc_num]

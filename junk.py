@@ -1,4 +1,23 @@
 import numpy as np
+import matplotlib.pyplot as plt
+
+N = 10000
+tmp1 = 0.35*(np.sqrt(300.)*np.random.randn(N)+1500.)
+tmp2 = 0.4*(np.sqrt(100.)*np.random.randn(N)+500.)
+tmp3 = 0.25*(np.sqrt(100.)*np.random.randn(N)+200.)
+
+all_vals = tmp1+tmp2+tmp3
+
+y, x = np.histogram(all_vals)
+nbins = y.size
+plt.hist(all_vals, bins=nbins, alpha=0.5)
+plt.show()
+
+quit()
+
+
+
+import numpy as np
 
 num_off = 50
 num_on = 100
